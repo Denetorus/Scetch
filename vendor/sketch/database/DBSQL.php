@@ -11,14 +11,13 @@ class DBSQL
 
     public function setAttributes($attr){
 
-
         foreach ($attr as $key => $val){
-            $this[$key] = $val;
+            $this->$key = $val;
         }
 
     }
 
-    public function Connect($attr = null)
+    public function connect($attr = null)
     {
 
         if ($attr !== null){
@@ -26,37 +25,67 @@ class DBSQL
         }
 
 
-        $this->db = new PDO(
+        $this->db = new \PDO(
             $this->dsn,
             $this->user,
             $this->password,
             [
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // возвращать ассоциативные массивы
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // возвращать Exception в случае ошибки
+                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC, // возвращать ассоциативные массивы
+                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION // возвращать Exception в случае ошибки
             ]
         );
     }
-
-    public function Query($query, $params = array())
+    public function query($query, $params = array())
     {
         $res = $this->db->prepare($query);
         $res->execute($params);
         return $res;
     }
-
-    public function Select($query, $params = array())
+    public function select($query, $params = array())
     {
         $result = $this->Query($query, $params);
         if ($result) {
             return $result->fetchAll();
         }
+        return null;
     }
 
-    public static function ShieldParameter($param){
+    public function createTable($table, $params=null, $options=null){
 
-        //__Add_functional__//
 
-        return $param;
+        $paramsText = '';
+        if ($params !== null){
+
+            foreach($params as $key=>$val){
+                $paramsText .= $key.' '.$val.',';
+            }
+
+        }
+        if ($options !== null){
+
+            foreach($options as $val){
+                $paramsText .= $val.',';
+            }
+
+        }
+
+        if (strlen($paramsText)>0){
+            $paramsText = substr($paramsText, 0, -1);
+        }
+
+        $queryText = 'CREATE TABLE "'.$table.'" ('.$paramsText.')';
+        $this->Query($queryText);
+    }
+    public function dropTable($table){
+        $this->Query('DELETE TABLE '.$table);
+    }
+    public function tableIsExist($table){
+        $result = $this->select("SELECT table_name FROM information_schema.tables  where table_schema='public' and table_name='{$table}'");
+        return Count($result) === 1;
     }
 
+    public function recordIsExist($table, $condition){
+        $result = $this->select("SELECT * FROM {$table} where {$condition}");
+        return Count($result) === 1;
+    }
 }
