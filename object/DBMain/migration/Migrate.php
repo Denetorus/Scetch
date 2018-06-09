@@ -1,15 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: gfc-c
- * Date: 08.06.2018
- * Time: 19:11
- */
 
 namespace object\DBMain\migration;
 
+use database\DBMain;
+use sketch\database\MigrateBase;
 
-class Migrate
+class Migrate extends MigrateBase
 {
+
+    public function __construct()
+    {
+        $this->db = DBMain::getInstance();
+    }
 
 }
