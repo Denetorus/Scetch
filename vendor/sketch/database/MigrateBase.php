@@ -69,7 +69,6 @@ class MigrateBase
         foreach ($List as $className) {
             $this->upOne($className);
         }
-        exit;
 
     }
 
