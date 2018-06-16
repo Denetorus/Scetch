@@ -1,6 +1,7 @@
 <?php
 namespace sketch\sign;
 
+use controller\HomeController;
 use sketch\sign\model\SignWithoutModel;
 
 class SignBase
@@ -13,10 +14,18 @@ class SignBase
     {
 
         return [
-            'class' => SignWithoutModel::class,
+            'class' => new SignWithoutModel,
         ];
 
     }
+
+    public function getSignParams(){
+        return [
+            'User' => $this->User,
+            'Authorize' => $this->Authorize
+        ];
+    }
+
 
     public function run(){
 
@@ -31,9 +40,8 @@ class SignBase
         $this->User = $SM->SignIn();
         $this->Authorize = ($this->User['id'] !== 0);
 
-        echo 'SignBase\run()<br>';
-        echo 'Authorize: '.$this->Authorize.'<br>';
-        var_dump($this->User);
+        return $this->getSignParams();
+
 
     }
 }
