@@ -1,7 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: gfc-c
- * Date: 17.06.2018
- * Time: 1:04
- */
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Sketch</title>
+</head>
+<body>
+    <h1>Welcome to SKETCH framework!!!</h1>
+</body>
+</html>
