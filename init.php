@@ -14,5 +14,8 @@ require_once(VENDOR.'/AutoLoad.php');
 $migrate = new \object\DBMain\migration\Migrate();
 $migrate->run();
 
-$router = new sign\SignMain();
-$router->run();
+$sign = new sign\SignMain();
+$signParams = $sign->run();
+
+$router = new router\RouterMain();
+$router->run($signParams);

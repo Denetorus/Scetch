@@ -29,7 +29,7 @@ class SignMain extends SignBase
         /* USE SIGN FROM ATTRIBUTES */
         /*
         return [
-            'class' => SignConfigModel::class,
+            'class' => new SignConfigModel,
             'id' => 2,
             'username' => 'manager'
         ];
@@ -37,8 +37,8 @@ class SignMain extends SignBase
 
         /* USE SIGN FROM DATABASE */
          return [
-            'class' => SignDBModel::class,
-            'db' => DBMain::class
+            'class' => new SignDBModel,
+            'db' => new DBMain
          ];
 
     }
