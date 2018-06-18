@@ -4,10 +4,11 @@ namespace controller;
 
 use sketch\controller\ControllerBase;
 
-class HomeController extends ControllerBase
+class TestController extends ControllerBase
 {
     public function actionIndex()
     {
-        return  $this->render("home/index.php");
+        echo "test is execute";
+        return  "";
     }
 }
