@@ -6,7 +6,6 @@ use sketch\database\DBSQL;
 
 abstract class DBBase
 {
-
     public static function getInstance()
     {
         if (static::$DB === null) {
@@ -24,5 +23,4 @@ abstract class DBBase
             'password' => ''
         ];
     }
-
 }

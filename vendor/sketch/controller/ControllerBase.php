@@ -10,10 +10,8 @@ abstract class ControllerBase
         $fileName = VIEW.'/'.$fileName;
 
         if (is_file($fileName)){
-
             include $fileName;
             return "";
-
         } else {
             return "This site made with use SKETCH framework ";
         }
