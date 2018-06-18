@@ -10,7 +10,7 @@ class SignConfigModel implements SignModelInterface
     public $id;
     public $username;
 
-    public function SignIn()
+    public function signIn()
     {
         if ($this->path !== '') {
             include $this->path;
@@ -22,7 +22,7 @@ class SignConfigModel implements SignModelInterface
         ];
     }
 
-    public function Register()
+    public function register()
     {
         return true;
     }

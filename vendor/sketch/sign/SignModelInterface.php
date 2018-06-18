@@ -4,6 +4,6 @@ namespace sketch\sign;
 
 interface SignModelInterface
 {
-    public function SignIn();
-    public function Register();
+    public function signIn();
+    public function register();
 }

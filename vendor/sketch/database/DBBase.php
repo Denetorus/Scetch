@@ -15,7 +15,7 @@ abstract class DBBase
         return static::$DB;
     }
 
-    public static function GetAttributes()
+    public static function getAttributes()
     {
         return [
             'dsn' => '',

@@ -37,7 +37,7 @@ abstract class SignBase implements CommandInterface
             $SM->{$key} = $value;
         }
 
-        $this->User = $SM->SignIn();
+        $this->User = $SM->signIn();
         $this->Authorize = ($this->User['id'] !== 0);
 
         return $params['router']->run($this->getSignParams());

@@ -1,8 +1,8 @@
 <?php
 
-spl_autoload_register("AutoLoad");
+spl_autoload_register("autoLoad");
 
-function AutoLoad($className)
+function autoLoad($className)
 {
     $path = $className;
     $dirs = [

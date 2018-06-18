@@ -6,7 +6,7 @@ use sketch\sign\SignModelInterface;
 
 class SignWithoutModel implements SignModelInterface
 {
-    public function SignIn()
+    public function signIn()
     {
         return [
             'id' => 0,
@@ -14,7 +14,7 @@ class SignWithoutModel implements SignModelInterface
         ];
     }
 
-    public function Register()
+    public function register()
     {
         return true;
     }
