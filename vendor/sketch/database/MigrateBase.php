@@ -44,7 +44,7 @@ abstract class MigrateBase implements CommandInterface
         $List = [];
         foreach (glob($path) as $File) {
             $className = basename($File, ".php");
-            if ( ! $this->db->recordIsExist('migration', "version='{$className}'") ){
+            if (! $this->db->recordIsExist('migration', "version='{$className}'")){
                 $List[] = $MigrationsNameSpase.'\\'.basename($File, ".php");
             };
         }
@@ -57,10 +57,12 @@ abstract class MigrateBase implements CommandInterface
         $time = time();
         $MigrateName = join('', array_slice(explode('\\', $className), -1));
         $this->db->query(
-            "INSERT INTO migration (version, apply_time) VALUES ('{$MigrateName}', {$time})"
+            "INSERT INTO migration (version, apply_time) 
+             VALUES ('{$MigrateName}', {$time})"
         );
     }
-    public function run($params=[]){
+    public function run($params=[])
+    {
 
         if ($this->checkMigrationTable()){
             $List = $this->getMigrationListNew();

@@ -32,8 +32,10 @@ class DBSQL
             $this->user,
             $this->password,
             [
-                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC, // возвращать ассоциативные массивы
-                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION // возвращать Exception в случае ошибки
+                // возвращать ассоциативные массивы
+                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+                // возвращать Exception в случае ошибки
+                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
             ]
         );
     }
@@ -83,13 +85,19 @@ class DBSQL
     }
     public function tableIsExist($table)
     {
-        $result = $this->select("SELECT table_name FROM information_schema.tables  where table_schema='public' and table_name='{$table}'");
+        $result = $this->select(
+            "SELECT table_name 
+                  FROM information_schema.tables  
+                  where table_schema='public' and table_name='{$table}'"
+        );
         return Count($result) === 1;
     }
 
     public function recordIsExist($table, $condition)
     {
-        $result = $this->select("SELECT * FROM {$table} where {$condition}");
+        $result = $this->select(
+            "SELECT * FROM {$table} where {$condition}"
+        );
         return Count($result) === 1;
     }
 }

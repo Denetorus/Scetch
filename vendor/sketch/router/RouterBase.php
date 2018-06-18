@@ -37,20 +37,20 @@ abstract class RouterBase implements CommandInterface
 
                 $parameters = explode('/', $internalRoute);
 
-                $controllerName = ucfirst( array_shift($parameters) ).'Controller';
+                $controllerName = ucfirst(array_shift($parameters)).'Controller';
 
 //                if (!$this->ROOT_REGIME && $controllerName!=='AccountController' && UserModel::GetLogin() === ''){
 //                    header('Location:/account/');
 //                    exit;
 //                }
 
-                $actionName = ucfirst( array_shift($parameters) );
+                $actionName = ucfirst(array_shift($parameters));
                 if ($actionName==='') {$actionName='index';}
                 $actionName = 'action'.$actionName;
 
 
                 $controllerFile = CONT."/". $controllerName . '.php';
-                if ( ! file_exists($controllerFile)){
+                if (! file_exists($controllerFile)){
                     break;
                 }
 
@@ -59,7 +59,7 @@ abstract class RouterBase implements CommandInterface
                 $className = 'Controller\\'.$controllerName;
                 $controllerObject = new $className;
 
-                $result = call_user_func_array( array($controllerObject, $actionName), $parameters);
+                $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
 
                 if ($result === null) break;
 
