@@ -64,7 +64,7 @@ abstract class MigrateBase implements CommandInterface
 
         if ($this->checkMigrationTable()){
             $List = $this->getMigrationListNew();
-        }else{
+        } else {
             $this->createMigrationTable();
             $List = $this->getMigrationListAll();
         };

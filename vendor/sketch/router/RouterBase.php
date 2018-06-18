@@ -19,7 +19,7 @@ abstract class RouterBase implements CommandInterface
 
     public function getUri()
     {
-        if(!empty($_SERVER['REQUEST_URI'])){
+        if (!empty($_SERVER['REQUEST_URI'])){
             return trim($_SERVER['REQUEST_URI'],'/');
         }
         return '';
@@ -31,7 +31,7 @@ abstract class RouterBase implements CommandInterface
         $uri = $this->getUri();
 
         foreach ($this->routes() as $uriPattern => $path){
-            if(preg_match("~$uriPattern~", $uri)){
+            if (preg_match("~$uriPattern~", $uri)){
 
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
 
@@ -50,7 +50,7 @@ abstract class RouterBase implements CommandInterface
 
 
                 $controllerFile = CONT."/". $controllerName . '.php';
-                if( ! file_exists($controllerFile)){
+                if ( ! file_exists($controllerFile)){
                     break;
                 }
 

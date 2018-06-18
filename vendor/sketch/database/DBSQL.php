@@ -57,14 +57,14 @@ class DBSQL
         $paramsText = '';
         if ($params !== null){
 
-            foreach($params as $key=>$val){
+            foreach ($params as $key=>$val){
                 $paramsText .= $key.' '.$val.',';
             }
 
         }
         if ($options !== null){
 
-            foreach($options as $val){
+            foreach ($options as $val){
                 $paramsText .= $val.',';
             }
 
