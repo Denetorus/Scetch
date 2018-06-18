@@ -7,10 +7,8 @@ use sketch\database\MigrateBase;
 
 class Migrate extends MigrateBase
 {
-
     public function __construct()
     {
         $this->db = DBMain::getInstance();
     }
-
 }

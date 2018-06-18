@@ -41,7 +41,6 @@ class SignMain extends SignBase
             'class' => new SignDBModel,
             'db' => new DBMain
          ];
-
     }
 
 }

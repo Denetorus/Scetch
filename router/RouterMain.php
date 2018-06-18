@@ -6,7 +6,6 @@ use sketch\router\RouterBase;
 
 class RouterMain extends RouterBase
 {
-
 //    public function routes(){
 //        return [
 //            '([a-z]+)/([a-z]+)' => '$1/$2',
@@ -15,5 +14,4 @@ class RouterMain extends RouterBase
 //        ];
 //
 //    }
-
 }

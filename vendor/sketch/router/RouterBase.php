@@ -6,7 +6,6 @@ use sketch\CommandInterface;
 
 abstract class RouterBase implements CommandInterface
 {
-
     public function routes()
     {
         return [
@@ -14,7 +13,6 @@ abstract class RouterBase implements CommandInterface
             '([a-z]+)' => '$1',
             '' => 'home/index',
         ];
-
     }
 
     public function getUri()
@@ -27,7 +25,6 @@ abstract class RouterBase implements CommandInterface
 
     public function run($signParams=[])
     {
-
         $uri = $this->getUri();
 
         foreach ($this->routes() as $uriPattern => $path){

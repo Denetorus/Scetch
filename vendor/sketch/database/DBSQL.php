@@ -4,7 +4,6 @@ namespace sketch\database;
 
 class DBSQL
 {
-
     protected $db;
     protected $dsn;
     protected $user;
@@ -12,20 +11,16 @@ class DBSQL
 
     public function setAttributes($attr)
     {
-
         foreach ($attr as $key => $val){
             $this->$key = $val;
         }
-
     }
 
     public function connect($attr = null)
     {
-
         if ($attr !== null){
             $this->setAttributes($attr);
         }
-
 
         $this->db = new \PDO(
             $this->dsn,
@@ -62,14 +57,11 @@ class DBSQL
             foreach ($params as $key=>$val){
                 $paramsText .= $key.' '.$val.',';
             }
-
         }
         if ($options !== null){
-
             foreach ($options as $val){
                 $paramsText .= $val.',';
             }
-
         }
 
         if (strlen($paramsText)>0){
@@ -79,10 +71,12 @@ class DBSQL
         $queryText = 'CREATE TABLE "'.$table.'" ('.$paramsText.')';
         $this->Query($queryText);
     }
+
     public function dropTable($table)
     {
         $this->Query('DELETE TABLE '.$table);
     }
+
     public function tableIsExist($table)
     {
         $result = $this->select(

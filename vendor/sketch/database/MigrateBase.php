@@ -7,16 +7,16 @@ use sketch\CommandInterface;
 abstract class MigrateBase implements CommandInterface
 {
     public $db;
-
     public function up(){}
-
     public function down(){}
 
-    private function checkMigrationTable(){
+    private function checkMigrationTable()
+    {
         return $this->db->tableIsExist('migration');
     }
-    private function createMigrationTable(){
 
+    private function createMigrationTable()
+    {
         $this->db->createTable('migration', [
             'version' => 'character varying(180) NOT NULL',
             'apply_time' => 'integer',
@@ -26,7 +26,6 @@ abstract class MigrateBase implements CommandInterface
 
             ]
         );
-
     }
 
     public function getMigrationListAll(){
@@ -38,6 +37,7 @@ abstract class MigrateBase implements CommandInterface
         }
         return $List;
     }
+
     public function getMigrationListNew(){
         $MigrationsNameSpase =  get_class($this)."_files";
         $path = ROOT.'\\'.$MigrationsNameSpase."\\*.php";
@@ -61,6 +61,7 @@ abstract class MigrateBase implements CommandInterface
              VALUES ('{$MigrateName}', {$time})"
         );
     }
+
     public function run($params=[])
     {
 
@@ -74,7 +75,5 @@ abstract class MigrateBase implements CommandInterface
         foreach ($List as $className) {
             $this->upOne($className);
         }
-
     }
-
 }

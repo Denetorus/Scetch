@@ -12,7 +12,6 @@ class SignConfigModel implements SignModelInterface
 
     public function SignIn()
     {
-
         if ($this->path !== '') {
             include $this->path;
         }
