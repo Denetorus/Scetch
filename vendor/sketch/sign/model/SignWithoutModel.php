@@ -6,14 +6,16 @@ use sketch\sign\SignModelInterface;
 
 class SignWithoutModel implements SignModelInterface
 {
-    public function SignIn(){
+    public function SignIn()
+    {
         return [
             'id' => 0,
             'username' => 'guest',
         ];
     }
 
-    public function Register(){
+    public function Register()
+    {
         return true;
     }
 

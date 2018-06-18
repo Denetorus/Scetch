@@ -7,7 +7,8 @@ use sketch\CommandInterface;
 class RouterBase implements CommandInterface
 {
 
-    public function routes(){
+    public function routes()
+    {
         return [
             '([a-z]+)/([a-z]+)' => '$1/$2',
             '([a-z]+)' => '$1',
@@ -16,14 +17,16 @@ class RouterBase implements CommandInterface
 
     }
 
-    public function getUri(){
+    public function getUri()
+    {
         if(!empty($_SERVER['REQUEST_URI'])){
             return trim($_SERVER['REQUEST_URI'],'/');
         }
         return '';
     }
 
-    public function run($signParams=[]){
+    public function run($signParams=[])
+    {
 
         $uri = $this->getUri();
 

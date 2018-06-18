@@ -11,17 +11,20 @@ class SignDBModel implements SignModelInterface
     public $user = '';
     public $password = '';
 
-    public function SignIn(){
+    public function SignIn()
+    {
         return [
             'id' => 3,
             'username' => 'db',
         ];
     }
 
-    public function getRegisterOptions(){
+    public function getRegisterOptions()
+    {
         return [];
     }
-    public function Register(){
+    public function Register()
+    {
         return true;
     }
 }

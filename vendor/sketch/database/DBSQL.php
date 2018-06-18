@@ -10,7 +10,8 @@ class DBSQL
     protected $user;
     protected $password;
 
-    public function setAttributes($attr){
+    public function setAttributes($attr)
+    {
 
         foreach ($attr as $key => $val){
             $this->$key = $val;
@@ -51,9 +52,8 @@ class DBSQL
         return null;
     }
 
-    public function createTable($table, $params=null, $options=null){
-
-
+    public function createTable($table, $params=null, $options=null)
+    {
         $paramsText = '';
         if ($params !== null){
 
@@ -77,15 +77,18 @@ class DBSQL
         $queryText = 'CREATE TABLE "'.$table.'" ('.$paramsText.')';
         $this->Query($queryText);
     }
-    public function dropTable($table){
+    public function dropTable($table)
+    {
         $this->Query('DELETE TABLE '.$table);
     }
-    public function tableIsExist($table){
+    public function tableIsExist($table)
+    {
         $result = $this->select("SELECT table_name FROM information_schema.tables  where table_schema='public' and table_name='{$table}'");
         return Count($result) === 1;
     }
 
-    public function recordIsExist($table, $condition){
+    public function recordIsExist($table, $condition)
+    {
         $result = $this->select("SELECT * FROM {$table} where {$condition}");
         return Count($result) === 1;
     }

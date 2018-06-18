@@ -7,7 +7,8 @@ use sketch\database\DBSQL;
 class DBBase
 {
 
-    public static function getInstance(){
+    public static function getInstance()
+    {
         if (static::$DB === null) {
             static::$DB = new DBSQL();
             static::$DB->Connect(static::GetAttributes());

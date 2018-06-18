@@ -20,7 +20,8 @@ class SignBase implements CommandInterface
 
     }
 
-    public function getSignParams(){
+    public function getSignParams()
+    {
         return [
             'User' => $this->User,
             'Authorize' => $this->Authorize
@@ -28,7 +29,8 @@ class SignBase implements CommandInterface
     }
 
 
-    public function run($params=[]){
+    public function run($params=[])
+    {
 
         $SignOptions = $this->options();
 
