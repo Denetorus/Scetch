@@ -1,8 +1,8 @@
 <?php
+
 namespace sketch\sign\model;
 
 use sketch\sign\SignModelInterface;
-
 
 class SignConfigModel implements SignModelInterface
 {

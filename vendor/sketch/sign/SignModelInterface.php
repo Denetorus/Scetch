@@ -1,4 +1,5 @@
 <?php
+
 namespace sketch\sign;
 
 interface SignModelInterface

@@ -2,8 +2,9 @@
 
 namespace sketch\database;
 
+use sketch\CommandInterface;
 
-class MigrateBase
+class MigrateBase implements CommandInterface
 {
     public $db;
 
@@ -55,9 +56,11 @@ class MigrateBase
         $CurrentMigrate->up();
         $time = time();
         $MigrateName = join('', array_slice(explode('\\', $className), -1));
-        $this->db->query("INSERT INTO migration (version, apply_time) VALUES ('{$MigrateName}', {$time})");
+        $this->db->query(
+            "INSERT INTO migration (version, apply_time) VALUES ('{$MigrateName}', {$time})"
+        );
     }
-    public function run(){
+    public function run($params=[]){
 
         if ($this->checkMigrationTable()){
             $List = $this->getMigrationListNew();

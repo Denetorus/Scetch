@@ -1,10 +1,11 @@
 <?php
+
 namespace sketch\sign;
 
-use controller\HomeController;
+use sketch\CommandInterface;
 use sketch\sign\model\SignWithoutModel;
 
-class SignBase
+class SignBase implements CommandInterface
 {
 
     public $User;
@@ -27,7 +28,7 @@ class SignBase
     }
 
 
-    public function run(){
+    public function run($params=[]){
 
         $SignOptions = $this->options();
 
@@ -40,7 +41,7 @@ class SignBase
         $this->User = $SM->SignIn();
         $this->Authorize = ($this->User['id'] !== 0);
 
-        return $this->getSignParams();
+        return $params['router']->run($this->getSignParams());
 
 
     }

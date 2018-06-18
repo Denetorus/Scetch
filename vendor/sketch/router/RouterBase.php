@@ -1,15 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: gfc-c
- * Date: 17.06.2018
- * Time: 1:28
- */
 
 namespace sketch\router;
 
+use sketch\CommandInterface;
 
-class RouterBase
+class RouterBase implements CommandInterface
 {
 
     public function routes(){
@@ -28,7 +23,7 @@ class RouterBase
         return '';
     }
 
-    public function run($signParams){
+    public function run($signParams=[]){
 
         $uri = $this->getUri();
 

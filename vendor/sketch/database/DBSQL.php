@@ -1,4 +1,5 @@
 <?php
+
 namespace sketch\database;
 
 class DBSQL

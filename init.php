@@ -11,11 +11,19 @@ define('SKETCH', ROOT.'/vendor/sketch');
 
 require_once(VENDOR.'/AutoLoad.php');
 
-$migrate = new \object\DBMain\migration\Migrate();
-$migrate->run();
+$commandsList = [
+    [
+        'command' => new \object\DBMain\migration\Migrate(),
+        'params' => []
+    ],
+    [
+        'command' => new sign\SignMain(),
+        'params' => [ 'router' => new router\RouterMain() ]
+    ]
+];
 
-$sign = new sign\SignMain();
-$signParams = $sign->run();
+$commands = new sketch\Commands();
+$commands->run($commandsList);
 
-$router = new router\RouterMain();
-$router->run($signParams);
+
+

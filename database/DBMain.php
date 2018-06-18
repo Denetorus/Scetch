@@ -1,4 +1,5 @@
 <?php
+
 namespace database;
 
 use \sketch\database\DBBase;
