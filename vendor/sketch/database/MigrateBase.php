@@ -4,7 +4,7 @@ namespace sketch\database;
 
 use sketch\CommandInterface;
 
-class MigrateBase implements CommandInterface
+abstract class MigrateBase implements CommandInterface
 {
     public $db;
 

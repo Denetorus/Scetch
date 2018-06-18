@@ -4,7 +4,7 @@ namespace sketch\router;
 
 use sketch\CommandInterface;
 
-class RouterBase implements CommandInterface
+abstract class RouterBase implements CommandInterface
 {
 
     public function routes()

@@ -5,7 +5,7 @@ namespace sketch\sign;
 use sketch\CommandInterface;
 use sketch\sign\model\SignWithoutModel;
 
-class SignBase implements CommandInterface
+abstract class SignBase implements CommandInterface
 {
 
     public $User;

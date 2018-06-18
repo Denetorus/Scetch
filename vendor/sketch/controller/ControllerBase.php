@@ -2,7 +2,7 @@
 
 namespace sketch\controller;
 
-class ControllerBase
+abstract class ControllerBase
 {
     public function render($fileName, $params = [])
     {

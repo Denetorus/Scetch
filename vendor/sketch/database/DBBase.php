@@ -4,7 +4,7 @@ namespace sketch\database;
 
 use sketch\database\DBSQL;
 
-class DBBase
+abstract class DBBase
 {
 
     public static function getInstance()
