@@ -27,5 +27,4 @@ class SignConfigModel implements SignModelInterface
     {
         return true;
     }
-
 }

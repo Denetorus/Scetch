@@ -69,8 +69,5 @@ abstract class RouterBase implements CommandInterface
 
             }
         }
-
-
     }
-
 }

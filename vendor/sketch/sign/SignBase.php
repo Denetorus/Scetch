@@ -13,11 +13,9 @@ abstract class SignBase implements CommandInterface
 
     public function options()
     {
-
         return [
             'class' => new SignWithoutModel,
         ];
-
     }
 
     public function getSignParams()
@@ -31,7 +29,6 @@ abstract class SignBase implements CommandInterface
 
     public function run($params=[])
     {
-
         $SignOptions = $this->options();
 
         $SM = new $SignOptions['class'];
@@ -44,7 +41,5 @@ abstract class SignBase implements CommandInterface
         $this->Authorize = ($this->User['id'] !== 0);
 
         return $params['router']->run($this->getSignParams());
-
-
     }
 }

@@ -6,7 +6,6 @@ use sketch\Command;
 
 class commands implements CommandInterface
 {
-
     public function run($params=[])
     {
         foreach ($params as $param){
@@ -14,5 +13,4 @@ class commands implements CommandInterface
             $obj->run($param['params']);
         }
     }
-
 }

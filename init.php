@@ -24,6 +24,3 @@ $commandsList = [
 
 $commands = new sketch\Commands();
 $commands->run($commandsList);
-
-
-

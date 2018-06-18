@@ -18,5 +18,4 @@ class SignWithoutModel implements SignModelInterface
     {
         return true;
     }
-
 }
