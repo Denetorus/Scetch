@@ -7,6 +7,8 @@ include "config_sketch.php";
 
 define("CONTROLLERS_PATH", CONS);
 
+require_once(VENDOR.'/autoLoad.php');
+
 if (!empty($_SERVER['argv'][0])){
     if ($_SERVER['argv'][0] === 'sketch') {
         array_splice($_SERVER['argv'], 0, 1);
@@ -27,15 +29,3 @@ Commands::add(
 );
 
 Commands::run();
-//
-//$commandsList = [
-//    [
-//        'command' => new sign\SignConsole(),
-//        'params' => [
-//            'router' => new router\RouterMain()
-//        ]
-//    ]
-//];
-//
-//$commands = new sketch\Commands();
-//$commands->run($commandsList);

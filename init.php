@@ -7,6 +7,9 @@ include "config_sketch.php";
 
 define("CONTROLLERS_PATH", CONT);
 
+require_once(VENDOR.'/autoLoad.php');
+
+
 Commands::add(
     new CommandObj(
         new sign\SignMain(),

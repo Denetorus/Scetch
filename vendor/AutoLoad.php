@@ -7,15 +7,7 @@ function autoLoad($className)
     $path = $className;
     $dirs = [
         '',
-        '/controller',
-        '/database',
-        '/model',
-        '/object',
-        '/sign',
         '/vendor',
-        '/vendor/sketch',
-        '/vendor/sketch/sign',
-        '/vendor/sketch/sign/model',
     ];
 
     $found = false;
