@@ -47,10 +47,9 @@ abstract class RouterBase implements CommandInterface
                 if (! file_exists($controllerFile)){
                     break;
                 }
-
                 include_once ($controllerFile);
 
-                $className = 'Controller\\'.$controllerName;
+                $className = CONTROLLERS_NAMESPACE.'\\'.$controllerName;
                 $controllerObject = new $className;
 
                 $result = call_user_func_array(array($controllerObject, $actionName), $parameters);

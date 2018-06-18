@@ -1,7 +1,6 @@
 <?php
 
-namespace controller;
-
+namespace console;
 
 use sketch\CommandObj;
 use sketch\Commands;
