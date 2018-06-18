@@ -28,7 +28,8 @@ abstract class MigrateBase implements CommandInterface
         );
     }
 
-    public function getMigrationListAll(){
+    public function getMigrationListAll()
+    {
         $MigrationsNameSpase =  get_class($this)."_files";
         $path = ROOT.'\\'.$MigrationsNameSpase."\\*.php";
         $List = [];
@@ -38,7 +39,8 @@ abstract class MigrateBase implements CommandInterface
         return $List;
     }
 
-    public function getMigrationListNew(){
+    public function getMigrationListNew()
+    {
         $MigrationsNameSpase =  get_class($this)."_files";
         $path = ROOT.'\\'.$MigrationsNameSpase."\\*.php";
         $List = [];
@@ -51,7 +53,8 @@ abstract class MigrateBase implements CommandInterface
         return $List;
     }
 
-    public function upOne($className){
+    public function upOne($className)
+    {
         $CurrentMigrate = new $className;
         $CurrentMigrate->up();
         $time = time();
@@ -60,20 +63,33 @@ abstract class MigrateBase implements CommandInterface
             "INSERT INTO migration (version, apply_time) 
              VALUES ('{$MigrateName}', {$time})"
         );
+        echo "Migrate {$MigrateName} is execute";
     }
 
     public function run($params=[])
     {
-
         if ($this->checkMigrationTable()){
-            $List = $this->getMigrationListNew();
+            $list = $this->getMigrationListNew();
         } else {
             $this->createMigrationTable();
-            $List = $this->getMigrationListAll();
+            $list = $this->getMigrationListAll();
         };
 
-        foreach ($List as $className) {
+        if (Count($list)===0){
+            echo "Migrate no required";
+            return true;
+        }
+
+        if (!empty($params['up'])){
+            $this->upOne($list[0]);
+            echo "Migrate up 1 is execute";
+            return true;
+        }
+
+        foreach ($list as $className) {
             $this->upOne($className);
         }
+        echo "Migrate all is execute";
+        return true;
     }
 }

@@ -1,26 +1,19 @@
 <?php
 
-define('ROOT', dirname(__FILE__));
-define('VIEW', ROOT.'/view');
-define('CONT', ROOT.'/controller');
-define('MODEL', ROOT.'/model');
-define('OBJECT', ROOT.'/object');
-define('VENDOR', ROOT.'/vendor');
-define('SIGN', ROOT.'/sign');
-define('SKETCH', ROOT.'/vendor/sketch');
+use sketch\Commands;
+use sketch\CommandObj;
 
-require_once(VENDOR.'/AutoLoad.php');
+include "config_sketch.php";
 
-$commandsList = [
-    [
-        'command' => new \object\DBMain\migration\Migrate(),
-        'params' => []
-    ],
-    [
-        'command' => new sign\SignMain(),
-        'params' => [ 'router' => new router\RouterMain() ]
-    ]
-];
+define("CONTROLLERS_PATH", CONT);
 
-$commands = new sketch\Commands();
-$commands->run($commandsList);
+Commands::add(
+    new CommandObj(
+        new sign\SignMain(),
+        [
+            'router' => new router\RouterMain()
+        ]
+    )
+);
+
+Commands::run();

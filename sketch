@@ -1,0 +1,41 @@
+<?php
+
+use sketch\Commands;
+use sketch\CommandObj;
+
+include "config_sketch.php";
+
+define("CONTROLLERS_PATH", CONS);
+
+if (!empty($_SERVER['argv'][0])){
+    if ($_SERVER['argv'][0] === 'sketch') {
+        array_splice($_SERVER['argv'], 0, 1);
+    }
+    if (!empty($_SERVER['argv'][0])){
+        $_SERVER['REQUEST_URI'] = $_SERVER['argv'][0];
+        array_splice($_SERVER['argv'], 0, 1);
+    }
+}
+
+Commands::add(
+    new CommandObj(
+        new sign\SignConsole(),
+        [
+            'router' => new router\RouterMain()
+        ]
+    )
+);
+
+Commands::run();
+//
+//$commandsList = [
+//    [
+//        'command' => new sign\SignConsole(),
+//        'params' => [
+//            'router' => new router\RouterMain()
+//        ]
+//    ]
+//];
+//
+//$commands = new sketch\Commands();
+//$commands->run($commandsList);

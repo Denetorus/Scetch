@@ -28,19 +28,19 @@ class SignMain extends SignBase
         */
 
         /* USE SIGN FROM ATTRIBUTES */
-        /*
         return [
             'class' => new SignConfigModel,
             'id' => 2,
             'username' => 'manager'
         ];
-        */
+
 
         /* USE SIGN FROM DATABASE */
-         return [
+        /* return [
             'class' => new SignDBModel,
             'db' => new DBMain
          ];
+        */
     }
 
 }

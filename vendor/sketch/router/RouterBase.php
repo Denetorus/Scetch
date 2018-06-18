@@ -43,7 +43,7 @@ abstract class RouterBase implements CommandInterface
                 if ($actionName==='') {$actionName='index';}
                 $actionName = 'action'.$actionName;
 
-                $controllerFile = CONT."/". $controllerName . '.php';
+                $controllerFile = CONTROLLERS_PATH."/". $controllerName . '.php';
                 if (! file_exists($controllerFile)){
                     break;
                 }

@@ -2,15 +2,37 @@
 
 namespace sketch;
 
-use sketch\Command;
-
-class commands implements CommandInterface
+class Commands
 {
-    public function run($params=[])
+    private static $listCommands = [];
+
+    public static function add(CommandObj $obj)
     {
-        foreach ($params as $param){
-            $obj = new $param['command'];
-            $obj->run($param['params']);
+        self::$listCommands[] = $obj;
+    }
+
+    private static function removeCurrent()
+    {
+        if (count(self::$listCommands)===0){
+            return false;
         }
+        unset(self::$listCommands[0]);
+        array_values(self::$listCommands);
+        return true;
+    }
+
+    public static function runNext()
+    {
+        if (count(self::$listCommands)===0){
+            return false;
+        }
+        $obj = array_shift(self::$listCommands);
+        $obj->run();
+        return true;
+    }
+
+    public static function run()
+    {
+        while (self::runNext()) {}
     }
 }
