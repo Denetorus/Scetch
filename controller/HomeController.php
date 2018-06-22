@@ -10,6 +10,6 @@ class HomeController extends ControllerBase
 {
     public function actionIndex()
     {
-        return  $this->render("home/index.php", SK::getProps());
+        return  $this->render("home/index.php", [ "SK_props" => SK::getProps() ]);
     }
 }
