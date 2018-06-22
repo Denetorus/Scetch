@@ -1,6 +1,6 @@
 <?php
 
-use sketch\Commands;
+use sketch\SK;
 use sketch\CommandObj;
 
 include "config_sketch.php";
@@ -10,7 +10,7 @@ define("CONTROLLERS_NAMESPACE", "controller");
 
 require_once(VENDOR.'/autoLoad.php');
 
-Commands::add(
+SK::add(
     new CommandObj(
         new sign\SignMain(),
         [
@@ -19,4 +19,4 @@ Commands::add(
     )
 );
 
-Commands::run();
+SK::run(ROOT."/config_sk.json");

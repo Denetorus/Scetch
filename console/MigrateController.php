@@ -3,13 +3,13 @@
 namespace console;
 
 use sketch\CommandObj;
-use sketch\Commands;
+use sketch\SK;
 
 class MigrateController
 {
     public function actionIndex()
     {
-        Commands::add(
+        SK::add(
             new CommandObj(
                 new \object\DBMain\migration\Migrate(),
                 $_SERVER['argv']
