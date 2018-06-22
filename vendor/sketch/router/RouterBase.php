@@ -27,8 +27,8 @@ abstract class RouterBase implements CommandInterface
     {
         $uri = $this->getUri();
 
-        foreach ($this->routes() as $uriPattern => $path){
-            if (preg_match("~$uriPattern~", $uri)){
+        foreach ($this->routes() as $uriPattern => $path) {
+            if (preg_match("~$uriPattern~", $uri)) {
 
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
                 $parameters = explode('/', $internalRoute);
@@ -43,18 +43,20 @@ abstract class RouterBase implements CommandInterface
                 if ($actionName==='') {$actionName='index';}
                 $actionName = 'action'.$actionName;
 
-                $controllerFile = CONTROLLERS_PATH."/". $controllerName . '.php';
-                if (! file_exists($controllerFile)){
+                $controllerFile = CONT."/". $controllerName . '.php';
+                if (! file_exists($controllerFile)) {
                     break;
                 }
-                include_once ($controllerFile);
+                include_once($controllerFile);
 
-                $className = CONTROLLERS_NAMESPACE.'\\'.$controllerName;
+                $className = CONT_NAMESPACE.'\\'.$controllerName;
                 $controllerObject = new $className;
 
                 $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
 
-                if ($result === null) break;
+                if ($result === null) {
+                    break;
+                }
 
                 echo $result;
 

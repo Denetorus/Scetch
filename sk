@@ -5,8 +5,8 @@ use sketch\CommandObj;
 
 include "config_sketch.php";
 
-define("CONTROLLERS_PATH", CONS);
-define("CONTROLLERS_NAMESPACE", "console");
+define('CONT', ROOT.'/console');
+define("CONT_NAMESPACE", "console");
 
 require_once(VENDOR.'/autoLoad.php');
 
