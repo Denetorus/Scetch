@@ -4,10 +4,10 @@ namespace sketch\database;
 
 use sketch\database\DBSQL;
 
-class DBBase
+abstract class DBBase
 {
-
-    public static function getInstance(){
+    public static function getInstance()
+    {
         if (static::$DB === null) {
             static::$DB = new DBSQL();
             static::$DB->Connect(static::GetAttributes());
@@ -15,12 +15,12 @@ class DBBase
         return static::$DB;
     }
 
-    public static function GetAttributes(){
+    public static function getAttributes()
+    {
         return [
             'dsn' => '',
             'user' => '',
             'password' => ''
         ];
     }
-
 }

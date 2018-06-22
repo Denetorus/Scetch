@@ -2,25 +2,26 @@
 
 namespace sketch\sign;
 
+use MongoDB\Driver\Command;
 use sketch\CommandInterface;
+use sketch\CommandObj;
+use sketch\SK;
 use sketch\sign\model\SignWithoutModel;
 
-class SignBase implements CommandInterface
+abstract class SignBase implements CommandInterface
 {
-
     public $User;
     public $Authorize;
 
     public function options()
     {
-
         return [
             'class' => new SignWithoutModel,
         ];
-
     }
 
-    public function getSignParams(){
+    public function getSignParams()
+    {
         return [
             'User' => $this->User,
             'Authorize' => $this->Authorize
@@ -28,8 +29,8 @@ class SignBase implements CommandInterface
     }
 
 
-    public function run($params=[]){
-
+    public function run($params=[])
+    {
         $SignOptions = $this->options();
 
         $SM = new $SignOptions['class'];
@@ -38,11 +39,14 @@ class SignBase implements CommandInterface
             $SM->{$key} = $value;
         }
 
-        $this->User = $SM->SignIn();
+        $this->User = $SM->signIn();
         $this->Authorize = ($this->User['id'] !== 0);
 
-        return $params['router']->run($this->getSignParams());
-
-
+        SK::add(
+            new CommandObj(
+                $params['router'],
+                $this->getSignParams()
+            )
+        );
     }
 }

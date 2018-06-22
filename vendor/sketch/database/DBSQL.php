@@ -4,35 +4,33 @@ namespace sketch\database;
 
 class DBSQL
 {
-
     protected $db;
     protected $dsn;
     protected $user;
     protected $password;
 
-    public function setAttributes($attr){
-
+    public function setAttributes($attr)
+    {
         foreach ($attr as $key => $val){
             $this->$key = $val;
         }
-
     }
 
     public function connect($attr = null)
     {
-
         if ($attr !== null){
             $this->setAttributes($attr);
         }
-
 
         $this->db = new \PDO(
             $this->dsn,
             $this->user,
             $this->password,
             [
-                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC, // возвращать ассоциативные массивы
-                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION // возвращать Exception в случае ошибки
+                // возвращать ассоциативные массивы
+                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+                // возвращать Exception в случае ошибки
+                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
             ]
         );
     }
@@ -51,23 +49,19 @@ class DBSQL
         return null;
     }
 
-    public function createTable($table, $params=null, $options=null){
-
-
+    public function createTable($table, $params=null, $options=null)
+    {
         $paramsText = '';
         if ($params !== null){
 
-            foreach($params as $key=>$val){
+            foreach ($params as $key=>$val){
                 $paramsText .= $key.' '.$val.',';
             }
-
         }
         if ($options !== null){
-
-            foreach($options as $val){
+            foreach ($options as $val){
                 $paramsText .= $val.',';
             }
-
         }
 
         if (strlen($paramsText)>0){
@@ -77,16 +71,27 @@ class DBSQL
         $queryText = 'CREATE TABLE "'.$table.'" ('.$paramsText.')';
         $this->Query($queryText);
     }
-    public function dropTable($table){
+
+    public function dropTable($table)
+    {
         $this->Query('DELETE TABLE '.$table);
     }
-    public function tableIsExist($table){
-        $result = $this->select("SELECT table_name FROM information_schema.tables  where table_schema='public' and table_name='{$table}'");
+
+    public function tableIsExist($table)
+    {
+        $result = $this->select(
+            "SELECT table_name 
+                  FROM information_schema.tables  
+                  where table_schema='public' and table_name='{$table}'"
+        );
         return Count($result) === 1;
     }
 
-    public function recordIsExist($table, $condition){
-        $result = $this->select("SELECT * FROM {$table} where {$condition}");
+    public function recordIsExist($table, $condition)
+    {
+        $result = $this->select(
+            "SELECT * FROM {$table} where {$condition}"
+        );
         return Count($result) === 1;
     }
 }

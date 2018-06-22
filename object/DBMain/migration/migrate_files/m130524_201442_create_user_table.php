@@ -8,9 +8,7 @@ class m130524_201442_create_user_table extends Migrate
 {
     public function up()
     {
-
         $this->db->createTable('user', [
-
                 'id' => 'serial NOT NULL',
                 'username' => 'character varying(255) NOT NULL',
                 'auth_key' => 'character varying(32) NOT NULL',
@@ -26,10 +24,8 @@ class m130524_201442_create_user_table extends Migrate
                 'CONSTRAINT user_email_key UNIQUE (email)',
                 'CONSTRAINT user_password_reset_token_key UNIQUE (password_reset_token)',
                 'CONSTRAINT user_username_key UNIQUE (username)'
-
             ]
         );
-
     }
 
     public function down()
