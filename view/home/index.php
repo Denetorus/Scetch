@@ -10,12 +10,7 @@
 <body>
     <h1>Welcome to SKETCH framework!!!</h1>
     <h2>SK Config:</h2>
-    <?php
-        foreach ($params as $key=>$value) {
-            echo "<h4>".$key.":";
-            var_dump($value);
-            echo "</h4>";
-        }
-    ?>
+    <h4><b>Param1:</b> <?= $param1 ?> </h4>
+    <h4><b>Param2:</b> <?= $param2 ?> </h4>
 </body>
 </html>
