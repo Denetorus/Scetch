@@ -5,8 +5,8 @@ use sketch\CommandObj;
 
 include "config_sketch.php";
 
-define('CONT', ROOT.'/controller');
-define("CONT_NAMESPACE", "controller");
+define('CONT', ROOT.'/api');
+define("CONT_NAMESPACE", "api");
 
 require_once(VENDOR.'/autoLoad.php');
 
@@ -20,3 +20,4 @@ SK::add(
 );
 
 SK::run(ROOT."/config_sk.json");
+

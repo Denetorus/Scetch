@@ -25,6 +25,7 @@ class SK
     {
         return self::$props;
     }
+
     public static function addProps($key, $value)
     {
         self::$props[$key] = $value;
@@ -34,6 +35,7 @@ class SK
     {
         self::$listCommands[] = $obj;
     }
+
     private static function removeCurrent()
     {
         if (count(self::$listCommands)===0){

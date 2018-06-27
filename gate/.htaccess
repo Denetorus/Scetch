@@ -2,6 +2,7 @@
 DirectoryIndex index.php
 
 RewriteEngine on
+
 RewriteCond %{REQUEST_FILENAME} -f [NC,OR]
 RewriteCond %{REQUEST_FILENAME} -d [NC]
 RewriteRule .* - [L]

@@ -2,6 +2,8 @@
 
 namespace sketch\controller;
 
+use sketch\view\ViewBase;
+
 abstract class ControllerBase
 {
     public function render($fileName, $params = [])
@@ -9,8 +11,8 @@ abstract class ControllerBase
         $fileName = VIEW.'/'.$fileName;
 
         if (is_file($fileName)){
-            include $fileName;
-            return "";
+            $view = new ViewBase();
+            return $view->render($fileName, $params);
         } else {
             return "This site made with use SKETCH framework ";
         }

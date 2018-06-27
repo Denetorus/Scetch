@@ -26,7 +26,6 @@ class CommandObj implements CommandInterface
         $this->params[] = $param;
     }
 
-
     public function removeParam($paramName){
         $this->params =
             array_filter($this->params, function($key) use($paramName){
@@ -34,7 +33,8 @@ class CommandObj implements CommandInterface
             });
     }
 
-    public function run($params = []){
+    public function run($params = [])
+    {
         if ($params = []){
             $this->setParams($params);
         }
