@@ -1,0 +1,23 @@
+<?php
+
+use sketch\SK;
+use sketch\CommandObj;
+
+include "config_sketch.php";
+
+define('CONT', ROOT.'/api');
+define("CONT_NAMESPACE", "api");
+
+require_once(VENDOR.'/autoLoad.php');
+
+SK::add(
+    new CommandObj(
+        new sign\SignMain(),
+        [
+            'router' => new router\RouterMain(),
+        ]
+    )
+);
+
+SK::run(ROOT."/config_sk.json");
+
